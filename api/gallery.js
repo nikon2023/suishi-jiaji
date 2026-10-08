@@ -23,7 +23,8 @@ function secretValid(received, expected) {
   );
 }
 async function github(path, opts = {}) {
-  const token = process.env.ALBUM_GITHUB_TOKEN;
+  // A pasted token may contain an accidental newline; trim credentials only, never log them.
+  const token = String(process.env.ALBUM_GITHUB_TOKEN || '').trim();
   if (!token) throw new GithubError(503, '未配置相册 GitHub 凭据');
   const url = 'https://api.github.com/repos/' + OWNER + '/' + REPO + path;
   const res = await fetch(url, {
@@ -110,6 +111,9 @@ module.exports = async function handler(req, res) {
   try {
     if (req.method === 'GET') {
       const imageId = req.query?.image;
+      // A missing manifest is normal for an empty album, but a private repository
+      // returning 404 for an unauthorized token must NOT masquerade as empty.
+      await github('');
       const items = await readManifest(issue);
       if (!imageId) return response(res,200,{issue,items:items.map(({id,caption,name,addedAt})=>({id,caption,name,addedAt}))});
       if (typeof imageId !== 'string' || !ID_RE.test(imageId)) return response(res,400,{error:'照片标识无效'});
@@ -166,8 +170,19 @@ module.exports = async function handler(req, res) {
     return response(res,200,{ok:true,commit:result.commit});
   } catch(e) {
     console.error('Album API:',e.name, e.status || '',e.message);
-    const status = e instanceof GithubError ? (e.status===404?404:e.status===409?409:e.status===503?503:e.status===400?400:e.status===413?413:502) : 502;
-    const message = e instanceof GithubError && [400,404,409,413,503].includes(e.status) ? e.message : '相册服务暂不可用，请稍后重试';
-    return response(res,status,{error:message});
+    // Expose a diagnostic category, not credentials or upstream request details.
+    const upstream = e instanceof GithubError ? e.status : 0;
+    const hint = {
+      401:'GitHub Token 已失效或填写错误（401）；请检查 ALBUM_GITHUB_TOKEN，并重新部署。',
+      403:'GitHub Token 权限不足或请求受限（403）；请检查私有仓库授权和 Contents 权限。',
+      404:'GitHub Token 无法访问指定私有仓库（404）；请确认仅授权 nikon2023/suishi-jiaji。',
+      422:'GitHub 写入操作校验失败（422）；请重试或检查 GitHub 权限。'
+    };
+    const status = [400,404,409,413,503].includes(upstream) && upstream!==404
+      ? upstream : 502;
+    const message = hint[upstream] || (e instanceof GithubError && [400,409,413,503].includes(upstream)
+      ? e.message : '相册服务暂不可用：请检查 Vercel 的相册服务日志与 GitHub Token 权限。');
+    const code = hint[upstream] ? 'GITHUB_HTTP_'+upstream : (upstream===503?'TOKEN_MISSING':'ALBUM_SERVER_ERROR');
+    return response(res,status,{error:message,code});
   }
 };
