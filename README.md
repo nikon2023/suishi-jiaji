@@ -2,7 +2,25 @@
 
 以真实生活为本，以经典文言为法，以诵读迁移为用。
 
-## MVP 0.3 · GitHub 私有仓库公开相册\n\n- `/api/gallery` 提供公开只读列表和图片流，管理员写入需 `ALBUM_ADMIN_PASSWORD`。\n- GitHub token 只存在 Vercel 服务端 `ALBUM_GITHUB_TOKEN`（fine-grained token，对当前仓库 Contents: read/write）。\n- **安全闸门：仓库必须 Private，上传、编辑、删除才允许执行。**\n- 图片由客户端转成 WebP，单张压缩后 ≤1.8MB，最多30张。图片通过服务端读取后公开展示。\n- 图片写入 `albums/<issue>/photos/`，元数据保存到对应 `manifest.json`，由同一个 Git commit 原子提交。\n- 删除照片不清除 Git 历史，网站公开图片仍可能被缓存和保存。\n- Vercel 需要设置 `ALBUM_GITHUB_TOKEN`、`ALBUM_ADMIN_PASSWORD`，且保持 GitHub-Vercel 私有仓库连接。\n- 旧 IndexedDB 本地照片不会自动迁移；如需迁移请从本机重新上传原图。\n\n## MVP 0.2 · 本期相册与维基延伸阅读
+## MVP 0.3 · Public GitHub 相册（当前）
+
+- GitHub `nikon2023/suishi-jiaji` 仓库为 Public。读者通过 `GET /api/gallery` 匿名查看图片，不依赖 GitHub Token。
+- 上传、编辑和删除必须通过 `ALBUM_ADMIN_PASSWORD` 验证；服务端使用 `ALBUM_GITHUB_TOKEN` 写入 GitHub，令牌只放在 Vercel Production 环境变量。
+- GitHub Fine-grained Token 必须具有 `suishi-jiaji` 的 **Contents: Read and write**；**Public 仅开放读取，不赋予写权限**。
+- 每期最多 30 张，输入 JPEG/PNG/WebP/GIF，在浏览器压缩为 WebP（上传文件 ≤1.8MB），照片存入 `albums/<issue>/photos/`，清单在 `manifest.json`。
+- **隐私边界**：公开仓库及网站访客都能看到照片；删除不等于从 Git 历史彻底消除。切勿上传私人家庭照片。
+- 从 MVP 0.2 本地 IndexedDB 到云端没有自动迁移，请重新上传经过审核的公开照片。
+
+### MVP 0.3 Evidence Gate
+
+- G1 仓库 Public：已通过（GitHub 元数据确认）。
+- G2 API 公开读：待线上 GET 验证；未创建相册时返回 `{"issue":"jianggao-001","items":[]}`。
+- G3 管理员写入：待实际上传验证；仅凭环境变量存在与部署 READY 不视为通过。
+- G4 刷新/跨设备可见：待实际上传后验证。
+- G5 编辑/删除：待实际操作验证。
+- **Gate 规则：G1-G5 全部实测通过才可 CLOSED，否则 OPEN。**
+
+## MVP 0.2 · 本期相册与维基延伸阅读
 
 - 《项脊轩志》扩展阅读补充维基文库作品原文、归有光维基百科词条、《震川先生集》卷十七的外部参考链接。
 - 本期目录新增「陆 · 影像相册」，支持多张图片上传、拖放、预览、说明编辑、单张保存、删除，图片写入浏览器 IndexedDB，按期号隔离。

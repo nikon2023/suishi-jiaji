@@ -24,14 +24,15 @@ function secretValid(received, expected) {
 }
 async function github(path, opts = {}) {
   // A pasted token may contain an accidental newline; trim credentials only, never log them.
-  const token = String(process.env.ALBUM_GITHUB_TOKEN || '').trim();
-  if (!token) throw new GithubError(503, '未配置相册 GitHub 凭据');
+  const publicRead = opts.publicRead === true && (!opts.method || opts.method === 'GET');
+  const token = publicRead ? '' : String(process.env.ALBUM_GITHUB_TOKEN || '').trim();
+  if (!publicRead && !token) throw new GithubError(503, '未配置相册 GitHub 写入凭据');
   const url = 'https://api.github.com/repos/' + OWNER + '/' + REPO + path;
   const res = await fetch(url, {
     method: opts.method || 'GET',
     headers: {
       Accept: 'application/vnd.github+json',
-      Authorization: 'Bearer ' + token,
+      ...(token ? {Authorization: 'Bearer ' + token} : {}),
       'X-GitHub-Api-Version': '2022-11-28',
       ...(opts.body ? {'Content-Type': 'application/json'} : {})
     },
@@ -44,7 +45,7 @@ async function github(path, opts = {}) {
 }
 const folder = issue => '/albums/' + issue;
 async function readManifest(issue, sha = BRANCH) {
-  const file = await github('/contents' + folder(issue) + '/manifest.json?ref=' + encodeURIComponent(sha), {allow404:true});
+  const file = await github('/contents' + folder(issue) + '/manifest.json?ref=' + encodeURIComponent(sha), {allow404:true,publicRead:true});
   if (!file) return [];
   if (file.encoding !== 'base64' || typeof file.content !== 'string') throw new GithubError(502, '图片清单格式无效');
   let items;
@@ -53,9 +54,9 @@ async function readManifest(issue, sha = BRANCH) {
   if (!Array.isArray(items)) throw new GithubError(502, '图片清单不是数组');
   return items.filter(p => p && ID_RE.test(p.id) && /^[0-9a-z-]+\.webp$/.test(p.file));
 }
-async function assertPrivate() {
-  const repo = await github('');
-  if (!repo.private) throw new GithubError(409, '请先将 GitHub 仓库设置为 Private，才能启用照片云端上传');
+async function assertPublic() {
+  const repo = await github('', {publicRead:true});
+  if (repo.private) throw new GithubError(409, '仓库不是 Public，当前公开相册读取模式不可用');
 }
 function validWebp(buf) {
   return buf.length >= 16 &&
@@ -111,15 +112,15 @@ module.exports = async function handler(req, res) {
   try {
     if (req.method === 'GET') {
       const imageId = req.query?.image;
-      // A missing manifest is normal for an empty album, but a private repository
-      // returning 404 for an unauthorized token must NOT masquerade as empty.
-      await github('');
+      // Public-album read does not depend on an admin GitHub token.
+      // Check the repo exists publicly before interpreting a missing manifest as an empty album.
+      await assertPublic();
       const items = await readManifest(issue);
       if (!imageId) return response(res,200,{issue,items:items.map(({id,caption,name,addedAt})=>({id,caption,name,addedAt}))});
       if (typeof imageId !== 'string' || !ID_RE.test(imageId)) return response(res,400,{error:'照片标识无效'});
       const target = items.find(p => p.id === imageId);
       if (!target) return response(res,404,{error:'照片不存在'});
-      const data = await github('/contents' + folder(issue) + '/photos/' + encodeURIComponent(target.file) + '?ref=' + BRANCH);
+      const data = await github('/contents' + folder(issue) + '/photos/' + encodeURIComponent(target.file) + '?ref=' + BRANCH, {publicRead:true});
       if (data.encoding !== 'base64' || typeof data.content !== 'string') return response(res,502,{error:'照片读取失败'});
       const bytes = Buffer.from(data.content,'base64');
       if (bytes.length > MAX_IMAGE_BYTES || !validWebp(bytes)) return response(res,502,{error:'存储的照片不符合格式要求'});
@@ -131,8 +132,8 @@ module.exports = async function handler(req, res) {
     if (!['POST','PATCH','DELETE'].includes(req.method)) return response(res,405,{error:'不支持的请求方法'});
     if (!secretValid(req.headers['x-album-admin'],process.env.ALBUM_ADMIN_PASSWORD))
       return response(res,401,{error:'管理员口令错误'});
-    await assertPrivate();
-
+    // Admin-only writes. Repo visibility is not an authorization mechanism.
+    // Keep credentials server-side and return an actionable error for invalid write grants.
     if (req.method === 'POST') {
       if (Number(req.headers['content-length'] || 0) > 2_700_000) return response(res,413,{error:'照片过大'});
       const raw = req.body?.data;
@@ -174,8 +175,8 @@ module.exports = async function handler(req, res) {
     const upstream = e instanceof GithubError ? e.status : 0;
     const hint = {
       401:'GitHub Token 已失效或填写错误（401）；请检查 ALBUM_GITHUB_TOKEN，并重新部署。',
-      403:'GitHub Token 权限不足或请求受限（403）；请检查私有仓库授权和 Contents 权限。',
-      404:'GitHub Token 无法访问指定私有仓库（404）；请确认仅授权 nikon2023/suishi-jiaji。',
+      403:'GitHub 写入 Token 权限不足或受到限制（403）；需授权 suishi-jiaji 的 Contents: Read and write。',
+      404:'GitHub 写入 Token 无法访问此仓库（404）；确认 Token 授权 nikon2023/suishi-jiaji。',
       422:'GitHub 写入操作校验失败（422）；请重试或检查 GitHub 权限。'
     };
     const status = [400,404,409,413,503].includes(upstream) && upstream!==404
