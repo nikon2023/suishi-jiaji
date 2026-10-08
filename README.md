@@ -2,7 +2,7 @@
 
 以真实生活为本，以经典文言为法，以诵读迁移为用。
 
-## MVP 0.2 · 本期相册与维基延伸阅读
+## MVP 0.3 · GitHub 私有仓库公开相册\n\n- `/api/gallery` 提供公开只读列表和图片流，管理员写入需 `ALBUM_ADMIN_PASSWORD`。\n- GitHub token 只存在 Vercel 服务端 `ALBUM_GITHUB_TOKEN`（fine-grained token，对当前仓库 Contents: read/write）。\n- **安全闸门：仓库必须 Private，上传、编辑、删除才允许执行。**\n- 图片由客户端转成 WebP，单张压缩后 ≤1.8MB，最多30张。图片通过服务端读取后公开展示。\n- 图片写入 `albums/<issue>/photos/`，元数据保存到对应 `manifest.json`，由同一个 Git commit 原子提交。\n- 删除照片不清除 Git 历史，网站公开图片仍可能被缓存和保存。\n- Vercel 需要设置 `ALBUM_GITHUB_TOKEN`、`ALBUM_ADMIN_PASSWORD`，且保持 GitHub-Vercel 私有仓库连接。\n- 旧 IndexedDB 本地照片不会自动迁移；如需迁移请从本机重新上传原图。\n\n## MVP 0.2 · 本期相册与维基延伸阅读
 
 - 《项脊轩志》扩展阅读补充维基文库作品原文、归有光维基百科词条、《震川先生集》卷十七的外部参考链接。
 - 本期目录新增「陆 · 影像相册」，支持多张图片上传、拖放、预览、说明编辑、单张保存、删除，图片写入浏览器 IndexedDB，按期号隔离。

@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/gallery.css" />
   <script src="/content.js" defer></script>
   <script src="/app.js" defer></script>
-  <script src="/gallery.js" defer></script>
+  <script src="/gallery-cloud.js" defer></script>
 </head>
 <body>
   <div class="reading-progress" id="readingProgress"></div>
@@ -85,8 +85,8 @@
       <div class="main-container"><div class="section-heading"><div><span class="section-overline">拾影成集 · MEMORY ALBUM</span><h2 id="galleryHeading">江皋留影，<i>为此刻存照。</i></h2></div><p>本期影像相册 · 《江皋携女记》<br>文字记心事，照片存光阴。</p></div>
         <div class="album-container">
           <div class="album-intro"><div><span class="album-label">卷之一 · 影像簿</span><h3>相逢的日子，值得留一帧。</h3><p>可选择多张照片，也可直接拖入此处。支持 JPEG、PNG、WebP、GIF。</p></div><div class="album-count"><strong id="albumCount">0</strong><small>张影像 · 本期上限 30 张</small></div></div>
-          <div class="album-upload-zone" id="albumDropZone"><div class="album-upload-symbol" aria-hidden="true">＋</div><p>拖入照片，或选择本机图片</p><label class="primary-button album-upload-button" for="albumFiles">选择照片 ↑</label><input type="file" id="albumFiles" accept="image/jpeg,image/png,image/webp,image/gif" multiple aria-label="上传本期照片" /><small>单张原图不超过 12MB；为了节省空间，普通照片将压缩保存。</small></div>
-          <div class="album-notice" role="note"><strong>只存于此设备</strong><span>照片保存在当前浏览器的 IndexedDB 中，不上传服务器，不会自动同步。清理浏览器数据、使用无痕模式或更换设备可能导致照片丢失。请自行备份重要原图。</span></div>
+          <div class="album-upload-zone" id="albumDropZone"><div class="album-upload-symbol" aria-hidden="true">＋</div><p>拖入照片，或选择本机图片</p><label class="primary-button album-upload-button" for="albumFiles">选择照片 ↑</label><input type="file" id="albumFiles" accept="image/jpeg,image/png,image/webp,image/gif" multiple aria-label="上传本期照片" /><small>单张原图不超过 12MB；上传前自动转为 WebP 并压缩；每张不超过 1.8MB。</small></div>
+          <div class="album-notice" role="note"><strong>公开相册 · 私有仓库存储</strong><span>照片上传到 GitHub 私有仓库，由网站公开展示。只有管理员可增删，上传前会压缩并移除常规照片元数据。请勿上传不适合公开的家庭照片。</span></div>
           <div id="albumFeedback" role="status" aria-live="polite" class="album-feedback"></div>
           <div id="albumGrid" class="album-grid" aria-live="polite"></div>
         </div>

@@ -25,6 +25,9 @@
     },
     "api/speech.js": {
       "maxDuration": 60
+    },
+    "api/gallery.js": {
+      "maxDuration": 60
     }
   }
 }
