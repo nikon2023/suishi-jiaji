@@ -1,4 +1,4 @@
-# 岁时家记 · Suishi Family Chronicles
+# 岁时家集 · Suishi Family Anthology
 
 以真实生活为本，以经典文言为法，以诵读迁移为用。
 
