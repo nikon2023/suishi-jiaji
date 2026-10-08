@@ -1,0 +1,13 @@
+{
+  "name": "suishi-jiaji",
+  "version": "0.1.0",
+  "private": true,
+  "description": "岁时家记：文言随笔与经典诵读",
+  "scripts": {
+    "check": "node --check app.js && node --check content.js && node --check api/_shared.js && node --check api/narrate.js && node --check api/speech.js",
+    "dev": "npx serve ."
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
