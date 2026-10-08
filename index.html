@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#f5f0e7" />
+  <meta name="description" content="岁时家记：以真实生活为本，以经典文言为法，以诵读迁移为用。每周一篇家常事，慢慢读成古文。" />
+  <title>岁时家记 · 以家常事，写岁月诗</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/content.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="reading-progress" id="readingProgress"></div>
+  <header class="site-header" id="siteHeader">
+    <a href="#home" class="brand" aria-label="岁时家记，返回首页"><span class="brand-seal">岁<br>时</span><span class="brand-type">岁时家记<small>SUISHI · FAMILY CHRONICLES</small></span></a>
+    <nav class="top-nav" aria-label="主导航">
+      <a href="#essay">读一篇</a><a href="#study">习一字</a><a href="#classics">品一卷</a><a href="#studio">听一声</a>
+    </nav>
+    <div class="header-actions"><button class="icon-button" id="printButton" title="打印本期讲义" aria-label="打印本期讲义">↥</button><a class="header-cta" href="#studio">进入解说工坊 <span>↗</span></a></div>
+  </header>
+  <main id="home">
+    <section class="hero section-grid" aria-labelledby="heroTitle">
+      <div class="hero-left">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> 家庭文言随笔 · 每周一记 <span class="rule"></span> 卷一 · 霜月</div>
+        <p class="hero-micro">时光有序，家书有声</p>
+        <h1 id="heroTitle">岁<span class="accent-word">时</span>家记<span class="title-dot">。</span></h1>
+        <p class="hero-quote">以家常事，写岁月诗。<br/>让每一次相伴，都有文言可记。</p>
+        <p class="hero-explain">从一句白话，到一篇古文；从一段陪伴，到一生可读。<br/>一周一记，借经典的语言，收藏寻常的日子。</p>
+        <div class="hero-buttons"><a href="#essay" class="primary-button">翻开第一卷 <span>↗</span></a><a href="#studio" class="text-button">试听文言解说 <span>→</span></a></div>
+        <div class="hero-meta"><span>01 <small>已收录篇章</small></span><i></i><span>07 <small>学习环节</small></span><i></i><span>∞ <small>岁月里的故事</small></span></div>
+      </div>
+      <div class="hero-art" aria-label="江边父女散步的抽象水墨场景" role="img">
+        <span class="art-corner art-corner-1">岁月有记</span>
+        <div class="art-sun"></div><div class="art-hill hill-a"></div><div class="art-hill hill-b"></div><div class="art-hill hill-c"></div>
+        <div class="art-water water-one"></div><div class="art-water water-two"></div><div class="art-water water-three"></div>
+        <div class="human human-tall"><span class="head"></span><span class="body"></span><span class="leg leg1"></span><span class="leg leg2"></span></div>
+        <div class="human human-small"><span class="head"></span><span class="body"></span><span class="leg leg1"></span><span class="leg leg2"></span></div>
+        <div class="hand-link"></div>
+        <div class="art-inscription"><b>江皋携女记</b><span>江风徐来 · 言笑晏晏</span></div>
+        <span class="art-corner art-corner-2">乙巳之后 · 常记</span>
+      </div>
+      <div class="hero-side-label">一笔家常，半卷春秋</div>
+    </section>
+
+    <section class="statement-band" aria-label="本站主张"><span>记寻常</span><b>·</b><span>读古文</span><b>·</b><span>知典故</span><b>·</b><span>养语感</span><b>·</b><span>传家声</span></section>
+
+    <section id="essay" class="reading-shell main-container reveal">
+      <aside class="reading-sidebar"><div class="sidebar-sticky"><span class="side-kicker">第〇一卷 / JOURNAL 001</span><h2>本期目录</h2><a class="side-link active" href="#essay">壹 · 江皋携女记</a><a class="side-link" href="#study">贰 · 字词与句式</a><a class="side-link" href="#allusions">叁 · 典故溯源</a><a class="side-link" href="#classics">肆 · 名篇共读</a><a class="side-link" href="#practice">伍 · 诵读仿写</a><a class="side-link" href="#studio">陆 · 定制解说</a><div class="aside-line"></div><p>记在寻常处，<br>情在不言中。</p><span class="vertical-chinese">岁时家记 · 卷之一</span></div></aside>
+      <div class="reading-main">
+        <div class="section-number">VOL. 01 <span>—</span> 亲情 / 陪伴 / 成长</div>
+        <h2 class="reading-title">江皋携女记</h2>
+        <p class="reading-sub">一江清风，两人同行。<span>写给每一个正在长大的孩子，也写给慢慢老去的父母。</span></p>
+        <div class="reading-toolbar"><span class="reading-tag">文言正文</span><span class="toolbar-hint">点按 <em>朱色字词</em>，查看音义与出处</span><button class="minor-button" id="fontDecrease" title="缩小正文字号">A−</button><button class="minor-button" id="fontIncrease" title="放大正文字号">A+</button><button class="minor-button" id="readAloud">♪ 朗读</button></div>
+        <article class="essay-paper" id="essayPaper" aria-label="江皋携女记正文">
+          <span class="paper-vertical">岁时 · 卷一</span>
+          <div class="essay-body" id="essayBody"></div>
+          <div class="essay-sign"><span class="little-seal">记</span>岁时家记 · 第一篇</div>
+        </article>
+        <div class="note-card"><span>读后记 · 此中真意</span><p>曾经是我牵着她，怕她跌倒；如今是她挽着我，陪我走过江岸。陪伴从不是单向的给予，而是我们一起慢慢成长。</p></div>
+        <div class="learning-strip"><div><span>本期进度</span><strong id="progressText">0 / 7</strong></div><div class="steps" id="learningSteps" aria-label="七环节学习进度"></div></div>
+      </div>
+    </section>
+
+    <section id="study" class="study-section pale-section reveal"><div class="main-container"><div class="section-heading"><div><span class="section-overline">字里行间 · WORDS & GRAMMAR</span><h2>习一字，<i>通一境。</i></h2></div><p>把生僻字读准，把虚词用活。<br>在这篇生活的记录里，慢慢读懂古文。</p></div>
+      <div class="study-tabs" role="tablist" aria-label="学习分类"><button class="tab is-active" data-tab="glossary" role="tab" aria-selected="true">字词注音 <span>12</span></button><button class="tab" data-tab="grammar" role="tab" aria-selected="false">实词虚词 <span>06</span></button><button class="tab" data-tab="patterns" role="tab" aria-selected="false">重点句式 <span>03</span></button></div>
+      <div id="studyPanel" class="study-panel"></div>
+    </div></section>
+
+    <section id="allusions" class="main-container allusion-section reveal"><div class="section-heading"><div><span class="section-overline">有典可循 · LITERARY ROOTS</span><h2>典出有源，<i>情有所归。</i></h2></div><p>用典不只求辞藻古雅，<br>更要回到原文，理解真正语境。</p></div><div class="allusion-grid" id="allusionGrid"></div></section>
+
+    <section id="classics" class="classics-section reveal"><div class="main-container classics-layout"><div class="classics-intro"><span class="section-overline">与古人共读 · CLASSIC READING</span><h2>一篇家记，<br><i>遇见一部经典。</i></h2><p>《项脊轩志》善以细事写深情。母亲轻叩门扉，祖母阖门寄望，庭中枇杷亭亭。日常之物，皆成光阴之证。</p><div class="quote-rule"></div><blockquote>“庭有枇杷树，吾妻死之年所手植也，今已亭亭如盖矣。”</blockquote><button class="primary-button" id="toggleClassic">展开《项脊轩志》全文 <span>↓</span></button><p class="classics-source">归有光 · 明代｜含部分教材省略段落</p></div><div class="classic-cover"><span>明 · 归有光</span><div class="cover-center"><small>文言扩展阅读</small><strong>项<br>脊<br>轩<br>志</strong></div><em>万籁有声 · 细事深情</em></div></div>
+      <div class="main-container full-classic" id="fullClassic" hidden><div class="classic-heading"><h3>《项脊轩志》 · 全文</h3><span>部分教材版本省略“项脊生曰”一段</span></div><div class="classical-text" id="classicText"></div><div class="classic-comparison"><b>比较阅读</b><p>留意《项脊轩志》中的“叩门问寒”“凭几学书”“枇杷树”，与本篇“牵手散步”“借书改稿”如何借细节写亲情。</p></div></div>
+    </section>
+
+    <section id="practice" class="main-container practice-section reveal"><div class="section-heading"><div><span class="section-overline">三读一写 · READING PRACTICE</span><h2>诵而有得，<i>写而能用。</i></h2></div><p>不止于背诵，更要从句子中习得表达。<br>朗读、理解、仿写，才是真正的积累。</p></div><div class="practice-layout"><div class="practice-quote"><span>本期背诵 · 壹</span><p>昔日牵其手，恐其失足；今乃执吾手，与我同行。江水东流，岁月不居。女之长也，吾之老也。然父女相携，朝夕相伴，虽流年暗换，而此情可长存。</p><button class="outline-light" id="reciteButton">▶ 听这一段</button></div><div class="practice-tasks"><div class="practice-task"><span>01</span><div><h3>一读 · 正音通意</h3><p>识字音、通句读，能用白话复述全文。</p></div><input aria-label="完成一读" type="checkbox" data-step="4" /></div><div class="practice-task"><span>02</span><div><h3>二读 · 析词辨句</h3><p>找出“辄、乃、俾、虽”等虚词，分析转折与对照。</p></div><input aria-label="完成二读" type="checkbox" data-step="5" /></div><div class="practice-task"><span>03</span><div><h3>三读 · 诵读仿写</h3><p>用“昔……今……”写一段自己的时光变化。</p></div><input aria-label="完成三读" type="checkbox" data-step="6" /></div></div></div></section>
+
+    <section id="studio" class="studio-section reveal"><div class="main-container"><div class="section-heading"><div><span class="section-overline">声随文起 · CUSTOM NARRATION STUDIO</span><h2>一题一声，<i>为你而讲。</i></h2></div><p>输入任何主题，选择听众与语气。<br>让文字长成独属于你的解说声音。</p></div>
+      <div class="studio-card"><div class="studio-form"><div class="studio-label">解说工坊 <span>01 / 自由创作</span></div><label for="topicInput">你想讲述什么？</label><textarea id="topicInput" rows="3" maxlength="600" placeholder="例如：父女江边散步的夜晚 / 一枚老邮票背后的家族记忆 / 苏轼的赤壁与人生……">江皋携女记：从父女散步，看岁月与陪伴</textarea><div class="field-grid"><div><label for="audienceSelect">听众</label><select id="audienceSelect"><option value="亲子共读">亲子共读</option><option value="高中生">高中生</option><option value="成年人">成年人</option><option value="初学者">文言初学者</option></select></div><div><label for="toneSelect">解说风格</label><select id="toneSelect"><option value="温润古雅">温润古雅</option><option value="娓娓道来">娓娓道来</option><option value="课堂讲解">课堂讲解</option><option value="诗意抒情">诗意抒情</option></select></div><div><label for="durationSelect">篇幅</label><select id="durationSelect"><option value="short">约 40 秒</option><option value="medium" selected>约 90 秒</option><option value="long">约 150 秒</option></select></div><div><label for="voiceSelect">配音音色</label><select id="voiceSelect"><option value="coral">Coral · 明朗温柔</option><option value="sage">Sage · 沉静知性</option><option value="verse">Verse · 书卷叙事</option><option value="onyx">Onyx · 低沉稳重</option></select></div></div><details class="advanced"><summary>进阶设置 · 私密访问口令 / 自定义素材 <span>⌄</span></summary><label for="sourceInput">补充事实或参考文本（避免生成无依据的典故）</label><textarea id="sourceInput" rows="3" maxlength="1500" placeholder="在这里粘贴待讲解的原文、背景事实或写作重点（可选）"></textarea><label for="passInput">网站生成服务访问口令（由站长设置）</label><input type="password" id="passInput" autocomplete="off" placeholder="未配置 API 时可空着，试用本地试听" /></details><div class="generate-row"><button class="primary-button" id="generateButton">生成定制解说 <span>✳</span></button><small id="generateNote">AI 功能需要服务端配置；没有配置时会显示本地示范稿。</small></div></div>
+      <div class="studio-output"><div class="output-head"><div><span class="output-caption">讲述预览</span><h3>让此刻，被好好讲述。</h3></div><span class="sound-symbol">♫</span></div><div class="soundwave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class="output-script" id="outputScript">每一个平凡的日子，都值得拥有自己的声音。填写一个主题，生成一段可修改、可朗读的定制解说。</p><div class="output-status" id="outputStatus">准备就绪 · 可先使用浏览器试听</div><div class="audio-player"><button class="play-round" id="playNarration" aria-label="播放解说">▶</button><div class="audio-info"><strong id="audioTitle">岁时 · 解说试听</strong><span id="audioMode">浏览器语音 / AI 音频就绪后自动切换</span></div><button class="minor-button" id="stopNarration">停止</button><button class="minor-button" id="downloadAudio" disabled>下载 MP3</button></div><p class="audio-disclosure">声明：AI 配音为合成语音，非真人录音。浏览器试听受设备语音引擎影响；未配置服务端密钥时不会生成 AI 语音文件。</p></div></div>
+    </div></section>
+    <section class="closing-section"><span class="closing-star">✳</span><p>岁时不语，文字有声。</p><h2>把日子过成故事，<br><i>把故事读成古文。</i></h2><a href="#home">回到卷首 ↑</a></section>
+  </main>
+  <footer class="site-footer"><span>岁时家记 · SUISHI JOURNAL</span><span>以真实生活为本，以经典文言为法，以诵读迁移为用。</span><span>© <span id="currentYear">2026</span> 岁时家记</span></footer>
+  <aside id="termPopover" class="term-popover" hidden role="dialog" aria-label="字词释义"><button type="button" id="closeTerm" aria-label="关闭释义">×</button><div id="termContent"></div></aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
