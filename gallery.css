@@ -1,0 +1,48 @@
+/* 本期影像相册；独立样式不影响现有文言学习区 */
+:root{--album-line:#d9cabb}
+.gallery-section{background:#f7f2e8;padding-top:8px}
+.album-container{border-top:1px solid var(--line);padding-top:24px}
+.album-intro{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:10px 0 30px}
+.album-intro h3{font-weight:600;font-size:clamp(23px,2.6vw,31px);margin:12px 0;color:var(--ink)}
+.album-intro p,.album-count small{color:var(--muted);line-height:1.8}
+.album-label,.wiki-heading{color:var(--red);font-size:12px;letter-spacing:2px}
+.album-count{white-space:nowrap;display:flex;flex-direction:column;text-align:right}
+.album-count strong{font-size:55px;font-weight:400;color:var(--red);line-height:1}
+.album-upload-zone{border:1px dashed #bea99b;background:#fdfaf3;text-align:center;padding:35px 20px;transition:background .2s,border-color .2s}
+.album-upload-zone.drag-over{background:#eae0d2;border-color:var(--red)}
+.album-upload-symbol{font-size:36px;color:var(--red);line-height:1}
+.album-upload-zone p{font-size:18px}
+.album-upload-zone small{display:block;color:var(--muted);margin-top:15px;font-size:12px}
+.album-upload-zone input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.album-upload-button{cursor:pointer;display:inline-block;font-size:15px}
+.album-upload-button:focus-within,.album-upload-button:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.album-notice{display:flex;gap:20px;align-items:flex-start;background:#eee7dc;padding:17px 20px;color:#655f52;font-size:13px;line-height:1.9;margin:22px 0}
+.album-notice strong{white-space:nowrap;color:var(--red)}
+.album-feedback{min-height:1.5em;font-size:13px;color:#8b4739;margin:10px 0}
+.album-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.album-empty{grid-column:1/-1;padding:42px 18px;text-align:center;border:1px solid var(--line);color:var(--muted)}
+.album-card{border:1px solid var(--line);background:#fffaf3;min-width:0}
+.album-preview{padding:0;width:100%;height:220px;display:block;background:#dfd6c5;overflow:hidden}
+.album-preview img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.album-preview:hover img{transform:scale(1.035)}
+.album-card-content{padding:15px 17px}
+.album-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.album-card-top time{font-size:12px;color:var(--muted)}
+.album-card-title{font-size:15px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.album-card-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+.album-card-actions button{color:var(--red);font-size:12px;background:transparent;padding:5px 0}
+.wiki-links{display:flex;flex-wrap:wrap;align-items:center;gap:9px 13px;max-width:680px;margin:18px 0 4px;font-size:13px}
+.wiki-heading{flex-basis:100%;margin-bottom:2px}
+.wiki-links a{padding:8px 12px;border:1px solid #bba899;background:#fff7ed;color:#7d3d31;line-height:1.4}
+.wiki-links a:hover,.wiki-links a:focus-visible{background:#9c4338;color:white}
+.wiki-links small{flex-basis:100%;color:var(--muted);line-height:1.6}
+.album-dialog{border:0;padding:18px;background:#fcf7ee;width:min(90vw,950px);max-height:91vh;box-shadow:0 16px 70px #0008}
+.album-dialog::backdrop{background:rgba(24,25,24,.8)}
+.album-dialog img{max-width:100%;max-height:71vh;object-fit:contain;display:block;margin:auto}
+.album-dialog-close{position:absolute;right:14px;top:12px;width:37px;height:37px;background:#fcf7ee;color:#36322d;font-size:25px}
+.album-dialog-details{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 3px 0}
+.album-dialog-details strong,.album-dialog-details small{display:block;margin-top:3px}
+.album-dialog-details small{color:var(--muted)}
+@media(max-width:850px){.album-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.album-grid{grid-template-columns:1fr}.album-intro{align-items:start;flex-direction:column}.album-count{flex-direction:row;gap:12px;align-items:baseline}.album-preview{height:260px}.album-notice{flex-direction:column;gap:6px}.album-dialog{padding:12px;width:96vw}.album-dialog-details{flex-direction:column;align-items:start}}
+@media print{.gallery-section,.album-dialog{display:none!important}}

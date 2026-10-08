@@ -11,8 +11,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/gallery.css" />
   <script src="/content.js" defer></script>
   <script src="/app.js" defer></script>
+  <script src="/gallery.js" defer></script>
 </head>
 <body>
   <div class="reading-progress" id="readingProgress"></div>
@@ -50,7 +52,7 @@
     <section class="statement-band" aria-label="本站主张"><span>记寻常</span><b>·</b><span>读古文</span><b>·</b><span>知典故</span><b>·</b><span>养语感</span><b>·</b><span>传家声</span></section>
 
     <section id="essay" class="reading-shell main-container reveal">
-      <aside class="reading-sidebar"><div class="sidebar-sticky"><span class="side-kicker">第〇一卷 / JOURNAL 001</span><h2>本期目录</h2><a class="side-link active" href="#essay">壹 · 江皋携女记</a><a class="side-link" href="#study">贰 · 字词与句式</a><a class="side-link" href="#allusions">叁 · 典故溯源</a><a class="side-link" href="#classics">肆 · 名篇共读</a><a class="side-link" href="#practice">伍 · 诵读仿写</a><a class="side-link" href="#studio">陆 · 定制解说</a><div class="aside-line"></div><p>记在寻常处，<br>情在不言中。</p><span class="vertical-chinese">岁时家集 · 卷之一</span></div></aside>
+      <aside class="reading-sidebar"><div class="sidebar-sticky"><span class="side-kicker">第〇一卷 / JOURNAL 001</span><h2>本期目录</h2><a class="side-link active" href="#essay">壹 · 江皋携女记</a><a class="side-link" href="#study">贰 · 字词与句式</a><a class="side-link" href="#allusions">叁 · 典故溯源</a><a class="side-link" href="#classics">肆 · 名篇共读</a><a class="side-link" href="#practice">伍 · 诵读仿写</a><a class="side-link" href="#gallery">陆 · 影像相册</a><a class="side-link" href="#studio">柒 · 定制解说</a><div class="aside-line"></div><p>记在寻常处，<br>情在不言中。</p><span class="vertical-chinese">岁时家集 · 卷之一</span></div></aside>
       <div class="reading-main">
         <div class="section-number">VOL. 01 <span>—</span> 亲情 / 陪伴 / 成长</div>
         <h2 class="reading-title">江皋携女记</h2>
@@ -73,11 +75,23 @@
 
     <section id="allusions" class="main-container allusion-section reveal"><div class="section-heading"><div><span class="section-overline">有典可循 · LITERARY ROOTS</span><h2>典出有源，<i>情有所归。</i></h2></div><p>用典不只求辞藻古雅，<br>更要回到原文，理解真正语境。</p></div><div class="allusion-grid" id="allusionGrid"></div></section>
 
-    <section id="classics" class="classics-section reveal"><div class="main-container classics-layout"><div class="classics-intro"><span class="section-overline">与古人共读 · CLASSIC READING</span><h2>一篇家记，<br><i>遇见一部经典。</i></h2><p>《项脊轩志》善以细事写深情。母亲轻叩门扉，祖母阖门寄望，庭中枇杷亭亭。日常之物，皆成光阴之证。</p><div class="quote-rule"></div><blockquote>“庭有枇杷树，吾妻死之年所手植也，今已亭亭如盖矣。”</blockquote><button class="primary-button" id="toggleClassic">展开《项脊轩志》全文 <span>↓</span></button><p class="classics-source">归有光 · 明代｜含部分教材省略段落</p></div><div class="classic-cover"><span>明 · 归有光</span><div class="cover-center"><small>文言扩展阅读</small><strong>项<br>脊<br>轩<br>志</strong></div><em>万籁有声 · 细事深情</em></div></div>
+    <section id="classics" class="classics-section reveal"><div class="main-container classics-layout"><div class="classics-intro"><span class="section-overline">与古人共读 · CLASSIC READING</span><h2>一篇家记，<br><i>遇见一部经典。</i></h2><p>《项脊轩志》善以细事写深情。母亲轻叩门扉，祖母阖门寄望，庭中枇杷亭亭。日常之物，皆成光阴之证。</p><div class="quote-rule"></div><blockquote>“庭有枇杷树，吾妻死之年所手植也，今已亭亭如盖矣。”</blockquote><button class="primary-button" id="toggleClassic">展开《项脊轩志》全文 <span>↓</span></button><p class="classics-source">归有光 · 明代｜含部分教材省略段落</p><div class="wiki-links" aria-label="维基延伸阅读"><span class="wiki-heading">维基延伸阅读 · WIKI REFERENCE</span><a href="https://zh.wikisource.org/wiki/項脊軒志" target="_blank" rel="noopener noreferrer" aria-label="维基文库《项脊轩志》原文（新窗口）">文库原文 ↗</a><a href="https://zh.wikipedia.org/wiki/归有光" target="_blank" rel="noopener noreferrer" aria-label="维基百科归有光人物词条（新窗口）">作者生平 ↗</a><a href="https://zh.wikisource.org/wiki/震川先生集/卷十七" target="_blank" rel="noopener noreferrer" aria-label="维基文库《震川先生集》卷十七（新窗口）">文集卷次 ↗</a><small>外部资料供核对异文、典故与背景，不等同于教材定本。</small></div></div><div class="classic-cover"><span>明 · 归有光</span><div class="cover-center"><small>文言扩展阅读</small><strong>项<br>脊<br>轩<br>志</strong></div><em>万籁有声 · 细事深情</em></div></div>
       <div class="main-container full-classic" id="fullClassic" hidden><div class="classic-heading"><h3>《项脊轩志》 · 全文</h3><span>部分教材版本省略“项脊生曰”一段</span></div><div class="classical-text" id="classicText"></div><div class="classic-comparison"><b>比较阅读</b><p>留意《项脊轩志》中的“叩门问寒”“凭几学书”“枇杷树”，与本篇“牵手散步”“借书改稿”如何借细节写亲情。</p></div></div>
     </section>
 
     <section id="practice" class="main-container practice-section reveal"><div class="section-heading"><div><span class="section-overline">三读一写 · READING PRACTICE</span><h2>诵而有得，<i>写而能用。</i></h2></div><p>不止于背诵，更要从句子中习得表达。<br>朗读、理解、仿写，才是真正的积累。</p></div><div class="practice-layout"><div class="practice-quote"><span>本期背诵 · 壹</span><p>昔日牵其手，恐其失足；今乃执吾手，与我同行。江水东流，岁月不居。女之长也，吾之老也。然父女相携，朝夕相伴，虽流年暗换，而此情可长存。</p><button class="outline-light" id="reciteButton">▶ 听这一段</button></div><div class="practice-tasks"><div class="practice-task"><span>01</span><div><h3>一读 · 正音通意</h3><p>识字音、通句读，能用白话复述全文。</p></div><input aria-label="完成一读" type="checkbox" data-step="4" /></div><div class="practice-task"><span>02</span><div><h3>二读 · 析词辨句</h3><p>找出“辄、乃、俾、虽”等虚词，分析转折与对照。</p></div><input aria-label="完成二读" type="checkbox" data-step="5" /></div><div class="practice-task"><span>03</span><div><h3>三读 · 诵读仿写</h3><p>用“昔……今……”写一段自己的时光变化。</p></div><input aria-label="完成三读" type="checkbox" data-step="6" /></div></div></div></section>
+
+<section id="gallery" class="gallery-section reveal" aria-labelledby="galleryHeading">
+      <div class="main-container"><div class="section-heading"><div><span class="section-overline">拾影成集 · MEMORY ALBUM</span><h2 id="galleryHeading">江皋留影，<i>为此刻存照。</i></h2></div><p>本期影像相册 · 《江皋携女记》<br>文字记心事，照片存光阴。</p></div>
+        <div class="album-container">
+          <div class="album-intro"><div><span class="album-label">卷之一 · 影像簿</span><h3>相逢的日子，值得留一帧。</h3><p>可选择多张照片，也可直接拖入此处。支持 JPEG、PNG、WebP、GIF。</p></div><div class="album-count"><strong id="albumCount">0</strong><small>张影像 · 本期上限 30 张</small></div></div>
+          <div class="album-upload-zone" id="albumDropZone"><div class="album-upload-symbol" aria-hidden="true">＋</div><p>拖入照片，或选择本机图片</p><label class="primary-button album-upload-button" for="albumFiles">选择照片 ↑</label><input type="file" id="albumFiles" accept="image/jpeg,image/png,image/webp,image/gif" multiple aria-label="上传本期照片" /><small>单张原图不超过 12MB；为了节省空间，普通照片将压缩保存。</small></div>
+          <div class="album-notice" role="note"><strong>只存于此设备</strong><span>照片保存在当前浏览器的 IndexedDB 中，不上传服务器，不会自动同步。清理浏览器数据、使用无痕模式或更换设备可能导致照片丢失。请自行备份重要原图。</span></div>
+          <div id="albumFeedback" role="status" aria-live="polite" class="album-feedback"></div>
+          <div id="albumGrid" class="album-grid" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
 
     <section id="studio" class="studio-section reveal"><div class="main-container"><div class="section-heading"><div><span class="section-overline">声随文起 · CUSTOM NARRATION STUDIO</span><h2>一题一声，<i>为你而讲。</i></h2></div><p>输入任何主题，选择听众与语气。<br>让文字长成独属于你的解说声音。</p></div>
       <div class="studio-card"><div class="studio-form"><div class="studio-label">解说工坊 <span>01 / 自由创作</span></div><label for="topicInput">你想讲述什么？</label><textarea id="topicInput" rows="3" maxlength="600" placeholder="例如：父女江边散步的夜晚 / 一枚老邮票背后的家族记忆 / 苏轼的赤壁与人生……">江皋携女记：从父女散步，看岁月与陪伴</textarea><div class="field-grid"><div><label for="audienceSelect">听众</label><select id="audienceSelect"><option value="亲子共读">亲子共读</option><option value="高中生">高中生</option><option value="成年人">成年人</option><option value="初学者">文言初学者</option></select></div><div><label for="toneSelect">解说风格</label><select id="toneSelect"><option value="温润古雅">温润古雅</option><option value="娓娓道来">娓娓道来</option><option value="课堂讲解">课堂讲解</option><option value="诗意抒情">诗意抒情</option></select></div><div><label for="durationSelect">篇幅</label><select id="durationSelect"><option value="short">约 40 秒</option><option value="medium" selected>约 90 秒</option><option value="long">约 150 秒</option></select></div><div><label for="voiceSelect">配音音色</label><select id="voiceSelect"><option value="coral">Coral · 明朗温柔</option><option value="sage">Sage · 沉静知性</option><option value="verse">Verse · 书卷叙事</option><option value="onyx">Onyx · 低沉稳重</option></select></div></div><details class="advanced"><summary>进阶设置 · 私密访问口令 / 自定义素材 <span>⌄</span></summary><label for="sourceInput">补充事实或参考文本（避免生成无依据的典故）</label><textarea id="sourceInput" rows="3" maxlength="1500" placeholder="在这里粘贴待讲解的原文、背景事实或写作重点（可选）"></textarea><label for="passInput">网站生成服务访问口令（由站长设置）</label><input type="password" id="passInput" autocomplete="off" placeholder="未配置 API 时可空着，试用本地试听" /></details><div class="generate-row"><button class="primary-button" id="generateButton">生成定制解说 <span>✳</span></button><small id="generateNote">AI 功能需要服务端配置；没有配置时会显示本地示范稿。</small></div></div>
@@ -87,6 +101,7 @@
   </main>
   <footer class="site-footer"><span>岁时家集 · SUISHI ANTHOLOGY</span><span>以真实生活为本，以经典文言为法，以诵读迁移为用。</span><span>© <span id="currentYear">2026</span> 岁时家集</span></footer>
   <aside id="termPopover" class="term-popover" hidden role="dialog" aria-label="字词释义"><button type="button" id="closeTerm" aria-label="关闭释义">×</button><div id="termContent"></div></aside>
+  <dialog id="albumDialog" class="album-dialog" aria-label="照片预览"><button type="button" class="album-dialog-close" id="albumDialogClose" aria-label="关闭预览">×</button><img id="albumDialogImage" alt="相册照片预览" /><div class="album-dialog-details"><div><strong id="albumDialogCaption"></strong><small id="albumDialogMeta"></small></div><a id="albumDialogDownload" class="minor-button" download="岁时家集-本期照片.jpg">保存本图 ↓</a></div></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
