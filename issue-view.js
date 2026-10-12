@@ -38,6 +38,7 @@ if(issue2){
  text('#allusions .section-heading>p','本篇不强行嵌入典故，以《诗经》鸟鸣诗句作延伸对读。');
  const classic=d.classic;
  text('.classics-intro>p',classic.intro);
+ text('#toggleClassic','展开'+classic.title+' · 节选 ↓');
  text('.classics-intro blockquote','“'+classic.quote+'”');
  text('.classics-source',classic.author+' · '+classic.source);
  text('.classic-cover>span','先秦 · '+classic.author);
