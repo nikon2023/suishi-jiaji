@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/gallery.css" />
   <script src="/content.js" defer></script>
+  <script src="/issue-002.js" defer></script>
+  <script src="/issue-view.js" defer></script>
   <script src="/app.js" defer></script>
   <script src="/gallery-cloud.js" defer></script>
 </head>
@@ -51,6 +53,8 @@
 
     <section class="statement-band" aria-label="本站主张"><span>记寻常</span><b>·</b><span>读古文</span><b>·</b><span>知典故</span><b>·</b><span>养语感</span><b>·</b><span>传家声</span></section>
 
+    <section class="issue-switch main-container reveal" id="issueSelector" aria-label="篇章切换"></section>
+
     <section id="essay" class="reading-shell main-container reveal">
       <aside class="reading-sidebar"><div class="sidebar-sticky"><span class="side-kicker">第〇一卷 / JOURNAL 001</span><h2>本期目录</h2><a class="side-link active" href="#essay">壹 · 江皋携女记</a><a class="side-link" href="#study">贰 · 字词与句式</a><a class="side-link" href="#allusions">叁 · 典故溯源</a><a class="side-link" href="#classics">肆 · 名篇共读</a><a class="side-link" href="#practice">伍 · 诵读仿写</a><a class="side-link" href="#gallery">陆 · 影像相册</a><a class="side-link" href="#studio">柒 · 定制解说</a><div class="aside-line"></div><p>记在寻常处，<br>情在不言中。</p><span class="vertical-chinese">岁时家集 · 卷之一</span></div></aside>
       <div class="reading-main">
@@ -63,6 +67,7 @@
           <div class="essay-body" id="essayBody"></div>
           <div class="essay-sign"><span class="little-seal">记</span>岁时家集 · 第一篇</div>
         </article>
+        <details id="sourceEssay" class="source-essay" hidden><summary id="sourceEssayTitle">查看原作文</summary><p id="sourceEssayNote" class="source-essay-note"></p><div id="sourceEssayBody" class="source-essay-body"></div></details>
         <div class="note-card"><span>读后记 · 此中真意</span><p>曾经是我牵着她，怕她跌倒；如今是她挽着我，陪我走过江岸。陪伴从不是单向的给予，而是我们一起慢慢成长。</p></div>
         <div class="learning-strip"><div><span>本期进度</span><strong id="progressText">0 / 7</strong></div><div class="steps" id="learningSteps" aria-label="七环节学习进度"></div></div>
       </div>
