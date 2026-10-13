@@ -1,4 +1,6 @@
-# 岁时家集 · Suishi Family Anthology
+# 岁岁文章 · Suisui Family Writings
+
+> 2026-10-13 品牌由「岁时家集」更名为「岁岁文章」。保留现有 GitHub 仓库路径 `nikon2023/suishi-jiaji`、站点 URL `suishi-jiaji.vercel.app`、内部 `SUISHI_CONTENT` 数据接口以及本地 `suishi-*` 键，以维持现有部署、篇目和学习进度兼容。
 
 以真实生活为本，以经典文言为法，以诵读迁移为用。
 

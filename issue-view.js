@@ -4,7 +4,7 @@ if(!d||!issues)return;
 const $=s=>document.querySelector(s),issue2=d.entry.id==='cuicui-002';
 const number=issue2?'贰':'壹',vol=issue2?'02':'01';
 const nav=$('#issueSelector');
-if(nav){const label=document.createElement('div');label.className='issue-selector-heading';label.innerHTML='<span>岁时卷帙 · ISSUES</span><b>已收录两篇 / Select a story</b>';nav.append(label);
+if(nav){const label=document.createElement('div');label.className='issue-selector-heading';label.innerHTML='<span>岁岁卷帙 · ISSUES</span><b>已收录两篇 / Select a story</b>';nav.append(label);
   for(const [i,v] of issues.entries()){const a=document.createElement('a');a.className='issue-item'+(d===v?' selected':'');a.href='?issue='+(i+1)+'#essay';a.setAttribute('aria-current',d===v?'page':'false');
   const no=document.createElement('span');no.textContent='卷 '+(i===0?'〇一':'〇二');
   const t=document.createElement('strong');t.textContent=v.entry.title;
@@ -14,7 +14,7 @@ if(nav){const label=document.createElement('div');label.className='issue-selecto
 const text=(selector,value)=>{const el=$(selector);if(el)el.textContent=value};
 const html=(selector,value)=>{const el=$(selector);if(el)el.innerHTML=value};
 document.body.classList.toggle('issue-two',issue2);
-document.title=(issue2?'翠翠记｜第二篇':'江皋携女记｜第一篇')+' · 岁时家集';
+document.title=(issue2?'翠翠记｜第二篇':'江皋携女记｜第一篇')+' · 岁岁文章';
 text('.hero-meta span:first-child',String(issues.length).padStart(2,'0'));
 if(issue2){
  text('.hero-buttons .primary-button','翻开第二篇 ↗');
@@ -23,12 +23,12 @@ if(issue2){
  text('.hero-quote','以家常事，写岁月诗。让一声鸟鸣，也有文言可记。');
  text('.side-kicker','第〇二卷 / JOURNAL 002');
  text('.reading-sidebar .side-link', '壹 · '+d.entry.title);
- text('.vertical-chinese','岁时家集 · 卷之二');
+ text('.vertical-chinese','岁岁文章 · 卷之二');
  text('.section-number','VOL. 02 — '+d.entry.theme.join(' / '));
  text('.reading-title',d.entry.title);
  const sub=$('.reading-sub');if(sub){sub.textContent=d.entry.subtitle;const span=document.createElement('span');span.textContent=d.entry.lead;sub.append(span)}
- text('.paper-vertical','岁时 · 卷二');
- text('.essay-sign','岁时家集 · 第二篇 · 文言改写');
+ text('.paper-vertical','岁岁 · 卷二');
+ text('.essay-sign','岁岁文章 · 第二篇 · 文言改写');
  text('.note-card p',d.entry.note);
  const article=$('#essayPaper');if(article)article.setAttribute('aria-label',d.entry.title+'文言改写正文');
  const source=$('#sourceEssay');if(source){source.hidden=false;text('#sourceEssayTitle','查看原作《'+d.entry.originalTitle+'》（校订展示稿）');text('#sourceEssayNote',d.entry.sourceNotice);

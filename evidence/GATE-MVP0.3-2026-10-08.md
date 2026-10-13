@@ -1,4 +1,4 @@
-# 岁时家集 · MVP0.3 Evidence Gate（2026-10-08）
+# 岁岁文章 · MVP0.3 Evidence Gate（2026-10-08）
 
 **Decision:** `CLOSED_WITH_EXCEPTIONS`（本轮实施工作归档；上传功能未完成生产验收，不得标为 `PASS`）。
 
