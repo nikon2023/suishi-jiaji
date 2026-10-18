@@ -1,6 +1,6 @@
 # 「岁岁有新章」→ Obsidian → 微信公众号草稿箱
 
-本目录存放**微信公众号排版副本**，与 Vercel 网站分离。原公众号编辑稿在 `wechat/issue-001.md`、`wechat/issue-002.md`，这里移除了非正文的“待发布/编辑说明/主标题/分享摘要”等控制标记，保留正文和文言新编。
+本目录存放**微信公众号排版副本**，与 Vercel 网站分离。原公众号编辑稿在 `wechat/issue-001.md`、`wechat/issue-002.md`、`wechat/issue-003.md`，这里移除了非正文的“待发布/编辑说明/主标题/分享摘要”等控制标记，保留正文和文言新编。
 
 ## 导入本地 Vault（macOS 首次执行）
 
@@ -10,7 +10,7 @@
 VAULT="/Users/User/Development/chat2obsidian"
 DEST="$VAULT/岁岁有新章/00_待发布"
 mkdir -p "$DEST"
-for n in 001 002; do
+for n in 001 002 003; do
   target="$DEST/issue-$n.md"
   if [ -e "$target" ]; then
     echo "跳过（已存在）：$target"
@@ -54,7 +54,7 @@ done
 
 | Gate | 结果 |
 | --- | --- |
-| 公众号文章 Markdown 适配并上传 GitHub | PASS |
+| 公众号第一、二、三篇 Markdown 适配并上传 GitHub | PASS |
 | Mac Vault 本地导入 `/Users/User/Development/chat2obsidian` | PENDING：需在用户 Mac 执行命令 |
 | Obsidian 插件名称/版本确认 | PENDING |
 | AppID/AppSecret 与 IP 白名单联通（不泄密） | PENDING |
