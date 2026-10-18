@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>岁岁文章 · A4 诵读讲义</title>
+<style>
+:root{--ink:#342e28;--red:#9c4338;--sand:#f6efe3;--soft:#77685c}
+*{box-sizing:border-box}
+html,body{margin:0;background:#e7e3dd;color:var(--ink)}
+body{font-family:"Noto Serif CJK SC","Noto Serif SC","Songti SC","SimSun",serif;-webkit-font-smoothing:antialiased}
+.preview-bar{width:min(210mm,95vw);margin:12px auto;display:flex;gap:14px;align-items:center;justify-content:space-between;font:13px sans-serif;color:#524b43}
+.preview-bar button{background:#9c4338;color:#fff;border:0;padding:10px 20px;cursor:pointer}
+.sheet{width:210mm;min-height:297mm;margin:0 auto 24px;padding:12mm 13mm 11mm;background:#fdfbf7;box-shadow:0 5px 35px #3a302425;position:relative;overflow:hidden}
+.sheet::after{content:"";position:absolute;inset:9mm;pointer-events:none;border:1px solid #d5c6b2;opacity:.65}
+.sheet>*{position:relative;z-index:1}
+.topline{font:11px sans-serif;letter-spacing:.1em;color:#7f6558;display:flex;justify-content:space-between;border-bottom:1px solid #dbd0c1;padding-bottom:6px}
+.banner{height:38mm;position:relative;margin:4mm 0 3mm;overflow:hidden;background:#f4ebdf}
+.banner svg{position:absolute;inset:0;width:100%;height:100%}
+.banner-text{position:absolute;top:10mm;left:8mm;z-index:2}
+.banner-kicker{font:600 10px sans-serif;color:#895749;letter-spacing:.2em}
+.banner-title{font-size:27px;letter-spacing:.14em;line-height:1.6;color:#4b3027;margin:1mm 0 0}
+.banner-small{font-size:11px;color:#645448;letter-spacing:.05em}
+.section-head{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid #b08d78;padding-bottom:5px;margin:4mm 0 3mm}
+.section-head b{color:#923f32;font-size:15px}
+.section-head small{font:10px sans-serif;color:#8d776c}
+.prose{font-size:12.6px;line-height:1.77;letter-spacing:.014em;color:#2b2a28}
+.prose p{margin:0 0 6px;text-indent:2em;orphans:2;widows:2}
+.notes{margin-top:3.5mm;border-top:2px solid #a46952;padding-top:3.5mm;display:grid;grid-template-columns:1fr 1.3fr;gap:6mm}
+.notes h3{font-size:13px;margin:0 0 7px;color:#873c30}
+.vocab{display:grid;grid-template-columns:1fr 1fr;gap:7px 12px}
+.vocab div{font-size:10.5px;line-height:1.55;color:#524c47}
+.vocab strong{color:#893e31}
+.vocab span{font-size:9px;color:#7f7670}
+.allusion{font-size:10.5px;line-height:1.55;color:#514c48;margin-bottom:7px}
+.allusion strong{color:#893e31}
+.allusion .ref{font-size:9.3px;color:#776b63}
+.allusion i{font-style:normal;color:#7a6253}
+.recite{background:#f3eee6;border-left:3px solid #b38a6c;margin-top:4mm;padding:7px 12px;font-size:10.5px;line-height:1.7;color:#665648}
+.recite strong{color:#8d4333}
+.footer{display:flex;justify-content:space-between;border-top:1px solid #dacdbb;margin-top:4.2mm;padding-top:6px;font:10px sans-serif;color:#80776f}
+.footer b{font-family:"Noto Serif CJK SC","Noto Serif SC",serif;color:#8b4538}
+@media print{
+ @page{size:A4 portrait;margin:0}
+ html,body{background:#fff}
+ .preview-bar{display:none!important}
+ .sheet{width:210mm;height:297mm;min-height:0;margin:0;padding:12mm 13mm 11mm;box-shadow:none;page-break-after:avoid;break-after:avoid}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media screen and (max-width:800px){.sheet{transform-origin:top left;max-width:none}.preview-bar{padding:0 12px}}
+</style>
+<script src="/content.js" defer></script>
+<script src="/issue-002.js" defer></script>
+<script src="/issue-003.js" defer></script>
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+ const issue=new URLSearchParams(location.search).get('issue');
+ const d=window.SUISHI_ISSUES?.find((x,i)=>String(i+1)===issue||x.entry.id===issue)||window.SUISHI_CONTENT;
+ if(!d)return;
+ const e=d.entry, i=window.SUISHI_ISSUES.indexOf(d);
+ const one=s=>document.querySelector(s),escape=s=>String(s||'').replace(/[&<>"']/g,t=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[t]));
+ const roman=['001','002','003'][i]||String(i+1).padStart(3,'0');
+ const c=['壹','贰','叁'][i]||String(i+1);
+ document.title='第'+roman+'期《'+e.title+'》· A4 单页讲义';
+ one('#num').textContent='ISSUE '+roman+' · '+e.theme.join(' / ');
+ one('#title').textContent=e.title;
+ one('#subtitle').textContent=e.subtitle||'一篇家常事，一卷成长记。';
+ one('#subtitleShort').textContent='第'+c+'篇 · 文言诵读单页';
+ one('#article').innerHTML=e.paragraphs.map(p=>'<p>'+escape(p)+'</p>').join('');
+ const selected=d.glossary.filter((w,i)=>i<6);
+ one('#vocab').innerHTML=selected.map(w=>'<div><strong>'+escape(w.term)+'</strong> <span>'+escape(w.pinyin)+'</span><br>'+escape(w.meaning)+'</div>').join('');
+ one('#allusions').innerHTML=d.allusions.slice(0,2).map((a,i)=>'<div class="allusion"><strong>注'+(i+1)+' '+escape(a.title)+'</strong> <span class="ref">'+escape(a.source)+'</span><br><i>'+escape(a.quote)+'</i><br>'+escape(a.note)+'</div>').join('');
+ one('#reciteText').textContent=e.memorize;
+ one('#printButton').onclick=()=>window.print();
+});
+</script>
+</head>
+<body>
+<div class="preview-bar"><span>岁岁文章 · A4 单页讲义预览（含插画及典故备注）</span><button id="printButton">打印 / 保存 PDF</button></div>
+<div class="sheet" id="printSheet">
+ <div class="topline"><span>岁岁文章 · 家庭文言诵读</span><span id="num">ISSUE 003 · 师恩 / 写作 / 成长</span></div>
+ <div class="banner" aria-label="古风书案与朱笔插画背景">
+  <svg viewBox="0 0 1100 235" preserveAspectRatio="xMidYMid slice" role="img" aria-label="文房、书册、朱笔与花枝构成的淡彩插画">
+   <defs><linearGradient id="paper" x2="1" y2="1"><stop stop-color="#f2e8da"/><stop offset=".53" stop-color="#f8f4ea"/><stop offset="1" stop-color="#d8c5a6"/></linearGradient><linearGradient id="book" x2="1"><stop stop-color="#dfd3b6"/><stop offset="1" stop-color="#f4ebda"/></linearGradient></defs>
+   <rect width="1100" height="235" fill="url(#paper)"/>
+   <path d="M0 190 Q130 125 240 176 T490 174 Q600 139 695 183 T1100 152 V235 H0Z" fill="#d3cbb8" opacity=".3"/>
+   <g transform="translate(660 36)" opacity=".68">
+    <path d="M1 129 Q126 81 210 132 Q286 90 422 128 L419 169 Q279 144 210 182 Q111 146 1 171Z" fill="#c6b99b"/>
+    <path d="M20 91 Q134 51 217 104 Q310 61 396 91 L396 146 Q286 107 217 150 Q104 112 20 151Z" fill="url(#book)" stroke="#967e65" stroke-width="4"/>
+    <path d="M217 105 L217 152" stroke="#9a826f" stroke-width="4"/>
+    <path d="M51 108 Q125 80 198 118 M240 119 Q308 85 370 108 M56 130 Q123 98 193 134 M241 133 Q320 104 370 129" fill="none" stroke="#ad9a87" stroke-width="2" opacity=".75"/>
+    <g transform="translate(280 -20) rotate(24)"><path d="M0 0 Q15 -16 20 3 L18 120 L7 145 L4 115Z" fill="#9d4836"/><path d="M7 145 L18 120 L14 154Z" fill="#caa784"/></g>
+   </g>
+   <g stroke="#9f9178" stroke-width="3" fill="none" opacity=".5"><path d="M890 0 Q870 60 910 101"/><path d="M955 0 Q928 50 941 90"/><path d="M1040 0 Q1020 64 1043 107"/></g>
+   <g fill="#9eab8e" opacity=".66"><ellipse cx="895" cy="35" rx="30" ry="10" transform="rotate(-28 895 35)"/><ellipse cx="930" cy="65" rx="27" ry="10" transform="rotate(31 930 65)"/><ellipse cx="1045" cy="39" rx="28" ry="10" transform="rotate(35 1045 39)"/></g>
+   <g fill="#b9775e" opacity=".38"><circle cx="942" cy="83" r="10"/><circle cx="1038" cy="97" r="8"/></g>
+  </svg>
+  <div class="banner-text"><div class="banner-kicker" id="subtitleShort">第三篇 · 文言诵读单页</div><div class="banner-title" id="title">唐师有术记</div><div class="banner-small" id="subtitle">一支批改的笔，藏着照亮孩子的魔法。</div></div>
+ </div>
+ <div class="section-head"><b>文言正文</b><small>先通读，再联系生活细节理解</small></div>
+ <main class="prose" id="article"></main>
+ <section class="notes">
+  <div><h3>字词速注</h3><div class="vocab" id="vocab"></div></div>
+  <div><h3>典故及出处备注</h3><div id="allusions"></div></div>
+ </section>
+ <div class="recite"><strong>诵读摘句｜</strong><span id="reciteText"></span></div>
+ <div class="footer"><b>岁岁有新章 · 常有文章，岁岁成章。</b><span>延伸阅读：网页第003期 · 亲子文言阅读</span></div>
+</div>
+</body>
+</html>
