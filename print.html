@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>岁岁文章 · A4 诵读讲义</title>
+<title>岁岁有新章 · A4 诵读讲义</title>
 <style>
 :root{--ink:#342e28;--red:#9c4338;--sand:#f6efe3;--soft:#77685c}
 *{box-sizing:border-box}
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  const roman=['001','002','003'][i]||String(i+1).padStart(3,'0');
  const c=['壹','贰','叁'][i]||String(i+1);
  document.title='第'+roman+'期《'+e.title+'》· A4 单页讲义';
- one('#num').textContent='ISSUE '+roman+' · '+e.theme.join(' / ');
+ one('#num').textContent='ISSUE '+roman+' · '+e.theme.join(' / ');\n one('#footerIssue').textContent='延伸阅读：网页第'+roman+'期 · 亲子文言阅读';
  one('#title').textContent=e.title;
  one('#subtitle').textContent=e.subtitle||'一篇家常事，一卷成长记。';
  one('#subtitleShort').textContent='第'+c+'篇 · 文言诵读单页';
@@ -76,9 +76,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 </head>
 <body>
-<div class="preview-bar"><span>岁岁文章 · A4 单页讲义预览（含插画及典故备注）</span><button id="printButton">打印 / 保存 PDF</button></div>
+<div class="preview-bar"><span>岁岁有新章 · A4 单页讲义预览（含插画及典故备注）</span><button id="printButton">打印 / 保存 PDF</button></div>
 <div class="sheet" id="printSheet">
- <div class="topline"><span>岁岁文章 · 家庭文言诵读</span><span id="num">ISSUE 003 · 师恩 / 写作 / 成长</span></div>
+ <div class="topline"><span>岁岁有新章 · 家庭文言诵读</span><span id="num">ISSUE 003 · 师恩 / 写作 / 成长</span></div>
  <div class="banner" aria-label="古风书案与朱笔插画背景">
   <svg viewBox="0 0 1100 235" preserveAspectRatio="xMidYMid slice" role="img" aria-label="文房、书册、朱笔与花枝构成的淡彩插画">
    <defs><linearGradient id="paper" x2="1" y2="1"><stop stop-color="#f2e8da"/><stop offset=".53" stop-color="#f8f4ea"/><stop offset="1" stop-color="#d8c5a6"/></linearGradient><linearGradient id="book" x2="1"><stop stop-color="#dfd3b6"/><stop offset="1" stop-color="#f4ebda"/></linearGradient></defs>
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   <div><h3>典故及出处备注</h3><div id="allusions"></div></div>
  </section>
  <div class="recite"><strong>诵读摘句｜</strong><span id="reciteText"></span></div>
- <div class="footer"><b>岁岁有新章 · 常有文章，岁岁成章。</b><span>延伸阅读：网页第003期 · 亲子文言阅读</span></div>
+ <div class="footer"><b>岁岁有新章 · 常有文章，岁岁成章。</b><span id="footerIssue">延伸阅读：网页第三期 · 亲子文言阅读</span></div>
 </div>
 </body>
 </html>
