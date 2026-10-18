@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded',()=>{
  const roman=['001','002','003'][i]||String(i+1).padStart(3,'0');
  const c=['壹','贰','叁'][i]||String(i+1);
  document.title='第'+roman+'期《'+e.title+'》· A4 单页讲义';
- one('#num').textContent='ISSUE '+roman+' · '+e.theme.join(' / ');\n one('#footerIssue').textContent='延伸阅读：网页第'+roman+'期 · 亲子文言阅读';
+ one('#num').textContent='ISSUE '+roman+' · '+e.theme.join(' / ');
+ one('#footerIssue').textContent='延伸阅读：网页第'+roman+'期 · 亲子文言阅读';
  one('#title').textContent=e.title;
  one('#subtitle').textContent=e.subtitle||'一篇家常事，一卷成长记。';
  one('#subtitleShort').textContent='第'+c+'篇 · 文言诵读单页';
