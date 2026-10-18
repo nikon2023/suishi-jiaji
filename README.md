@@ -92,3 +92,9 @@ api/speech.js       私有服务端 TTS 合成
 api/_shared.js      API 权限校验与统一请求
 vercel.json         部署与安全响应头
 ```
+## 第三篇（2026-10-18）
+
+- 网站第三篇：[`?issue=3#essay`](https://suishi-jiaji.vercel.app/?issue=3#essay)，《唐师有术记》，依据学生作文《“有魔法”的唐老师》改写。
+- 原稿保留疑似笔误供作者核实；文言正文、字词、句式与《论语》对读分别记录在 `issue-003.js`。
+- 公众号草稿：[`wechat/issue-003.md`](wechat/issue-003.md)，Obsidian 文本：[`wechat/obsidian/issue-003.md`](wechat/obsidian/issue-003.md)。
+- 微信草稿箱直传仍受历史 IP 白名单问题阻断，第三篇没有声称已推送或发布。
