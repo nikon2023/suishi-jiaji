@@ -24,3 +24,23 @@
 @media(max-width:850px){.issue-switch.main-container{grid-template-columns:repeat(2,minmax(0,1fr))}.issue-selector-heading{grid-column:1/-1}}
 @media(max-width:550px){.issue-switch.main-container{gap:10px}.issue-item{padding:13px;gap:6px;min-height:135px}.issue-item strong{font-size:19px}.issue-item>span:last-child{grid-column:1;grid-row:auto}.source-essay{padding:16px}.source-essay-body{font-size:15px}}
 @media print{.issue-switch,.source-essay{display:none!important}}
+
+/* Third issue: balanced three-volume selector and teacher-themed hero */
+@media(min-width:851px){
+ .issue-switch.main-container{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .issue-selector-heading{grid-column:1/-1;display:flex;flex-direction:row;justify-content:space-between;align-items:center}
+ .issue-item{min-height:135px}
+}
+@media(max-width:550px){
+ .issue-switch.main-container{grid-template-columns:1fr}
+ .issue-selector-heading{grid-column:1}
+ .issue-item{min-height:104px}
+ .issue-item>span:last-child{grid-column:2;grid-row:3}
+}
+.issue-three .hero-art{background:linear-gradient(145deg,#d7ccbb,#eee6da 59%,#d6b994)}
+.issue-three .art-sun{background:#bd8360}
+.issue-three .human,.issue-three .hand-link{display:none}
+.issue-three .hero-art:before{
+ content:'教';font:700 clamp(100px,17vw,190px)/1 "Noto Serif SC",serif;
+ position:absolute;inset:25% 0 auto;text-align:center;color:#9c4338;opacity:.19;z-index:2;pointer-events:none
+}
